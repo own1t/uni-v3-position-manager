@@ -1,0 +1,19 @@
+{
+    "name": "uni-v3-position-manager",
+    "scripts": {
+        "build": "npm run clean && npm run compile",
+        "clean": "npx hardhat clean",
+        "compile": "npx hardhat compile",
+        "test": "npx hardhat test"
+    },
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^1.0.2",
+        "bignumber.js": "^9.1.0",
+        "chalk": "^4.1.2",
+        "decimal.js": "^10.4.0",
+        "dotenv": "^16.0.1",
+        "hardhat": "^2.11.1",
+        "hardhat-contract-sizer": "^2.6.1",
+        "hardhat-deploy": "^0.11.11"
+    }
+}
