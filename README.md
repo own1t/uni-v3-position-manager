@@ -1,13 +1,23 @@
-# Sample Hardhat Project
+# Uniswap V3 Position Manager
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
-
-Try running some of the following tasks:
+add .env before running tests
 
 ```shell
-npx hardhat help
-npx hardhat test
-GAS_REPORT=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+
+ALCHEMY_API_KEY=YOUR_API_KEY
+
+LOG_RESULTS=false
+
+```
+
+to run tests
+
+```shell
+
+# to run tests for UniswapV3Oracle
+npm test ./test/oracle.ts
+
+# to run tests for PositionManager (creates both put and call positions on ETH-Stable pools)
+npm test ./test/index/ts
+
 ```

@@ -16,7 +16,6 @@ import { approve, formatUnits, getTokenBalance, isWrappedNative, parseUnits, see
 
 import { INonfungiblePositionManager, IQuoter, ISwapRouter, PositionManager, UniswapV3Oracle } from "../typechain-types";
 
-
 const ccb = (value: any) => chalk.cyanBright(value.toString())
 
 describe("PositionManager", () => {
@@ -231,22 +230,24 @@ describe("PositionManager", () => {
 		expect(balance0).to.be.eq(0)
 		expect(balance1).to.be.eq(0)
 
-		// console.log(``)
-		// console.log(`====================================================================================================`)
-		// console.log(``)
-		// console.log(`Opened ${ccb(PositionType[positionType])} Position on ${ccb(`${token0.symbol}-${token1.symbol} (${fee / 10000}%)`)} Pool (UNI-V3 NFT ID: ${ccb(tokenId.toString())})`)
-		// console.log(``)
-		// console.log(`Current Tick: ${ccb(tickCurrent)}`)
-		// console.log(`Position Ticks: ${ccb([tickLower, tickUpper])}`)
-		// console.log(`Current Price: ${ccb(priceCurrent)}`)
-		// console.log(`Position Prices: ${ccb(prices)}`)
-		// console.log(`Liquidity: ${ccb(liquidity.toString())}`)
-		// console.log(`Amounts: ${ccb([formatUnits(amount0, token0.decimals), formatUnits(amount1, token1.decimals)])}`)
-		// console.log(`Token0 Balance: ${ccb(formatUnits(balance0, token0.decimals))}`)
-		// console.log(`Token0 Balance: ${ccb(formatUnits(balance1, token1.decimals))}`)
-		// console.log(``)
-		// console.log(`====================================================================================================`)
-		// console.log(``)
+		if (process.env.LOG_RESULTS === "true") {
+			console.log(``)
+			console.log(`====================================================================================================`)
+			console.log(``)
+			console.log(`Opened ${ccb(PositionType[positionType])} Position on ${ccb(`${token0.symbol}-${token1.symbol} (${fee / 10000}%)`)} Pool (UNI-V3 NFT ID: ${ccb(tokenId.toString())})`)
+			console.log(``)
+			console.log(`Current Tick: ${ccb(tickCurrent)}`)
+			console.log(`Position Ticks: ${ccb([tickLower, tickUpper])}`)
+			console.log(`Current Price: ${ccb(priceCurrent)}`)
+			console.log(`Position Prices: ${ccb(prices)}`)
+			console.log(`Liquidity: ${ccb(liquidity.toString())}`)
+			console.log(`Amounts: ${ccb([formatUnits(amount0, token0.decimals), formatUnits(amount1, token1.decimals)])}`)
+			console.log(`Token0 Balance: ${ccb(formatUnits(balance0, token0.decimals))}`)
+			console.log(`Token0 Balance: ${ccb(formatUnits(balance1, token1.decimals))}`)
+			console.log(``)
+			console.log(`====================================================================================================`)
+			console.log(``)
+		}
 
 		return tokenId
 	}
@@ -530,23 +531,25 @@ describe("PositionManager", () => {
 		expect(balance0).to.be.eq(0)
 		expect(balance1).to.be.eq(0)
 
-		// console.log(``)
-		// console.log(`====================================================================================================`)
-		// console.log(``)
-		// console.log(`Opened ${ccb(PositionType[positionType])} Position on ${ccb(`${token0.symbol}-${token1.symbol} (${fee / 10000}%)`)} Pool (UNI-V3 NFT ID: ${ccb(tokenId.toString())})`)
-		// console.log(``)
-		// console.log(`Current Tick: ${ccb(tickCurrent)}`)
-		// console.log(`Position Ticks: ${ccb([tickLower, tickUpper])}`)
-		// console.log(`Current Price: ${ccb(priceCurrent)}`)
-		// console.log(`Position Prices: ${ccb(prices)}`)
-		// console.log(`Liquidity: ${ccb(liquidity.toString())}`)
-		// console.log(`Amounts: ${ccb([formatUnits(amount0, token0.decimals), formatUnits(amount1, token1.decimals)])}`)
-		// console.log(``)
-		// console.log(`Token0 Balance: ${ccb(formatUnits(balance0, token0.decimals))}`)
-		// console.log(`Token0 Balance: ${ccb(formatUnits(balance1, token1.decimals))}`)
-		// console.log(``)
-		// console.log(`====================================================================================================`)
-		// console.log(``)
+		if (process.env.LOG_RESULTS === "true") {
+			console.log(``)
+			console.log(`====================================================================================================`)
+			console.log(``)
+			console.log(`Opened ${ccb(PositionType[positionType])} Position on ${ccb(`${token0.symbol}-${token1.symbol} (${fee / 10000}%)`)} Pool (UNI-V3 NFT ID: ${ccb(tokenId.toString())})`)
+			console.log(``)
+			console.log(`Current Tick: ${ccb(tickCurrent)}`)
+			console.log(`Position Ticks: ${ccb([tickLower, tickUpper])}`)
+			console.log(`Current Price: ${ccb(priceCurrent)}`)
+			console.log(`Position Prices: ${ccb(prices)}`)
+			console.log(`Liquidity: ${ccb(liquidity.toString())}`)
+			console.log(`Amounts: ${ccb([formatUnits(amount0, token0.decimals), formatUnits(amount1, token1.decimals)])}`)
+			console.log(``)
+			console.log(`Token0 Balance: ${ccb(formatUnits(balance0, token0.decimals))}`)
+			console.log(`Token0 Balance: ${ccb(formatUnits(balance1, token1.decimals))}`)
+			console.log(``)
+			console.log(`====================================================================================================`)
+			console.log(``)
+		}
 
 		return tokenId
 	}

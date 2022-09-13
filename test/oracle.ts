@@ -1,12 +1,13 @@
 import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
+import chalk from "chalk";
 import { ethers } from "hardhat";
 import { BigNumber } from "ethers";
 
 import { ChainId, PoolFee, TokenModel, UNISWAP_V3_CONTRACTS, USDC_ADDRESS, WETH_ADDRESS } from "../constants";
 import { decodePath, encodePath } from "./shared/path";
 import { getStableList, getTokenList } from "./shared/tokens";
-import { parseUnits, switchChains } from "./shared/utils";
+import { formatUnits, parseUnits, switchChains } from "./shared/utils";
 
 
 const setPaths = (paths: { tokens: TokenModel[], fees: PoolFee[], baseAmount: BigNumber }[]) => {
@@ -18,6 +19,8 @@ const setPaths = (paths: { tokens: TokenModel[], fees: PoolFee[], baseAmount: Bi
 		baseAmount
 	}))
 }
+
+const ccb = (value: any) => chalk.cyanBright(value.toString())
 
 describe("UniswapV3Oracle", () => {
 	const chainId = ChainId.MAINNET
@@ -72,6 +75,24 @@ describe("UniswapV3Oracle", () => {
 				const delta = amountOut.mul(1000).div(10000)
 
 				expect(amountOut).to.be.closeTo(quoterAmountOut, delta)
+
+				if (process.env.LOG_RESULTS === "true") {
+					console.log(``)
+					console.log(`====================================================================================================`)
+					console.log(``)
+
+					console.log(`BaseToken: ${ccb(baseToken.symbol)} | ${ccb(baseToken.address)}`)
+					console.log(`RouteToken: ${ccb(routeToken.symbol)} | ${ccb(routeToken.address)}`)
+					console.log(`QuoteToken: ${ccb(quoteToken.symbol)} | ${ccb(quoteToken.address)}`)
+
+					console.log(``)
+					console.log(`Oracle Result: ${ccb(formatUnits(amountOut, quoteToken.decimals))}`)
+					console.log(`Quoter Result: ${ccb(formatUnits(quoterAmountOut, quoteToken.decimals))}`)
+
+					console.log(``)
+					console.log(`====================================================================================================`)
+					console.log(``)
+				}
 			})
 		)
 	})
