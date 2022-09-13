@@ -14,10 +14,10 @@ to run tests
 
 ```shell
 
-# to run tests for UniswapV3Oracle
-npm test ./test/oracle.ts
-
 # to run tests for PositionManager (creates both put and call positions on ETH-Stable pools)
-npm test ./test/index/ts
+npm run test-pm
+
+# to run tests for UniswapV3Oracle
+npm run test-oracle
 
 ```

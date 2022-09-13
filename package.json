@@ -4,7 +4,9 @@
         "build": "npm run clean && npm run compile",
         "clean": "npx hardhat clean",
         "compile": "npx hardhat compile",
-        "test": "npx hardhat test"
+        "test": "npx hardhat test",
+        "test-pm": "npx hardhat test ./test/pm.ts",
+        "test-oracle": "npx hardhat test ./test/oracle.ts"
     },
     "devDependencies": {
         "@nomicfoundation/hardhat-toolbox": "^1.0.2",
